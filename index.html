@@ -27,7 +27,7 @@
                 var team_id = data['data'][0]['team']['id'];
 
                 $.getJSON('https://www.balldontlie.io/api/v1/season_averages', serialized_player_id, function (data){
-                    $('#output_NBA_Player_stats').append('<h2>Season Stats:</h2>');
+                    $('#season_stats').append('Season Stats:');
                     $('#NBAPlayerStatsTable').append('<tr><th>Season</th><th>gp</th><th>fg pct</th><th>fg3 pct</th><th>ft pct</th><th>reb</th><th>ast</th><th>stl</th><th>blk</th><th>pts</th></tr>');
                     $('#NBAPlayerStatsTable').append('<tr><td>' + data['data'][0]['season'] + '</td><td>' + data['data'][0]['games_played'] + '</td><td>' + data['data'][0]['fg_pct']*100 + '%</td><td>' + data['data'][0]['fg3_pct']*100 + '%</td><td>' + data['data'][0]['ft_pct']*100 + '%</td><td>' + data['data'][0]['reb'] + '</td><td>' + data['data'][0]['ast'] + '</td><td>' + data['data'][0]['stl'] + '</td><td>' + data['data'][0]['blk'] + '</td><td>' + data['data'][0]['pts'] + '</td></tr>');
 
@@ -35,9 +35,9 @@
                     var serialized_games = "seasons[]=" + season + "&team_ids[]=" + team_id;
 
                     $.getJSON('https://www.balldontlie.io/api/v1/games', serialized_games, function (data){
-                        $('#output_NBA_Games').append('Last 4 Games');
+                        $('#last_4_games').append('Last 4 Games');
                         $('#NBA_Games_Table').append('<tr><th>Date</th><th>Match Up</th><th>result</th></tr>');
-                        $('#game_line_stats').append('<h2>Game Line Stats</h2>');
+                        $('#game_line_stats').append('Game Line Stats');
                         $('#NBA_Game_Stats_Table').append('<tr><th>min</th><th>fg pct</th><th>fg3 pct</th><th>ft pct</th><th>reb</th><th>ast</th><th>stl</th><th>blk</th><th>turnover</th><th>pts</th></tr>');
 
                         for(var i = 0; i < 4; i++){
@@ -68,8 +68,10 @@
                 $('#NBA_Games_Table').html('');
                 $('#NBA_Game_Stats_Table').html('');
                 $('#game_line_stats').html('');
-                $('#output_NBA_Player_stats').html('<table id="NBAPlayerStatsTable" border="1px solid black" align="center"></table>');
-                $('#output_NBA_Games').html(' <table id="NBAPlayerStatsTable" border="1px solid black" align="center"></table>');
+                $('#last_4_games').html('');
+                $('#season_stats').html('');
+                $('#output_NBA_Player_stats').html('<h2 id="season_stats"></h2><table id="NBAPlayerStatsTable" border="1px solid black" align="center"></table>');
+                $('#output_NBA_Games').html('<h2 id="last_4_games"></h2><table id="NBAPlayerStatsTable" border="1px solid black" align="center"></table>');
                 $('#output_NBA_Game_Stats').html('<h2 id="game_line_stats"></h2><table id="NBA_Game_Stats_Table" align="center"></table>');
 
 
@@ -97,10 +99,12 @@
         </form>
         <br>
         <form id = "output_NBA_Player_stats">
+            <h2 id="season_stats"></h2>
             <table id="NBAPlayerStatsTable" border="1px solid black" align="center"></table>
         </form>
         <br>
         <form id = "output_NBA_Games">
+            <h2 id="last_4_games"></h2>
             <table id="NBA_Games_Table" align="center"></table>
         </form>
         <br>
