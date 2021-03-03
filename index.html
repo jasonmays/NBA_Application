@@ -36,8 +36,8 @@
 
                     $.getJSON('https://www.balldontlie.io/api/v1/games', serialized_games, function (data){
                         $('#output_NBA_Games').append('Last 4 Games');
-                        $('#output_NBA_Game_Stats').append('<h2>Game Line Stats</h2>');
                         $('#NBA_Games_Table').append('<tr><th>Date</th><th>Match Up</th><th>result</th></tr>');
+                        $('#game_line_stats').append('<h2>Game Line Stats</h2>');
                         $('#NBA_Game_Stats_Table').append('<tr><th>min</th><th>fg pct</th><th>fg3 pct</th><th>ft pct</th><th>reb</th><th>ast</th><th>stl</th><th>blk</th><th>turnover</th><th>pts</th></tr>');
 
                         for(var i = 0; i < 4; i++){
@@ -67,6 +67,11 @@
                 $('#NBAPlayerStatsTable').html('');
                 $('#NBA_Games_Table').html('');
                 $('#NBA_Game_Stats_Table').html('');
+                $('#game_line_stats').html('');
+                $('#output_NBA_Player_stats').html('<table id="NBAPlayerStatsTable" border="1px solid black" align="center"></table>');
+                $('#output_NBA_Games').html(' <table id="NBAPlayerStatsTable" border="1px solid black" align="center"></table>');
+                $('#output_NBA_Game_Stats').html('<h2 id="game_line_stats"></h2><table id="NBA_Game_Stats_Table" align="center"></table>');
+
 
                 if (player == '' || isNaN(player) == false) {
                     $("#player").html('Please enter a valid player');
@@ -100,6 +105,7 @@
         </form>
         <br>
         <form id = "output_NBA_Game_Stats">
+            <h2 id="game_line_stats"></h2>
             <table id="NBA_Game_Stats_Table" align="center"></table>
         </form> 
     </body>
